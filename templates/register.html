@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script>
+        
+        function generatePassword() {
+            const length = 12;  
+            const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()"; 
+            let password = "";
+            for (let i = 0; i < length; i++) {
+                const randomIndex = Math.floor(Math.random() * charset.length);
+                password += charset[randomIndex];
+            }
+            
+            document.getElementById("password").value = password;
+            document.getElementById("password_repeat").value = password; 
+            
+            const passwordNotification = document.getElementById("generated_password_display");
+            passwordNotification.innerText = "Ваш сгенерированный пароль: " + password;
+            passwordNotification.style.display = 'block';  
+        }
+    </script>
+</head>
+<body>
+    <h2>Регистрация</h2>
+    <form action="/register" method="POST" enctype="multipart/form-data">
+        <input type="text" name="username" placeholder="Логин" required>
+        <input type="password" name="password" id="password" placeholder="Пароль" required>
+        <input type="password" name="password_repeat" id="password_repeat" placeholder="Повторите пароль" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="text" name="name" placeholder="Имя" required>
+        <input type="text" name="nickname" placeholder="Никнейм" required>
+        <input type="text" name="phone" placeholder="Телефон">
+        <select name="gender">
+            <option value="male">Мужской</option>
+            <option value="female">Женский</option>
+            <option value="other">Другой</option>
+        </select>
+        <input type="file" name="avatar" accept="image/*">
+        <button type="submit">Зарегистрироваться</button>
+        <button type="button" onclick="window.location.href='/login'">Войти</button>
+    </form>
+    <button type="button" onclick="generatePassword()">Сгенерировать пароль</button> 
+    <p id="generated_password_display" style="color: green; font-weight: bold; display: none;"></p> 
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h2>Профиль пользователя</h2>
+    <div class="profile">
+        <p><strong>Логин:</strong> {{ user.username }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Имя:</strong> {{ user.name }}</p>
+        <p><strong>Никнейм:</strong> {{ user.nickname }}</p>
+        <p><strong>Телефон:</strong> {{ user.phone }}</p>
+        <p><strong>Пол:</strong> {{ user.gender }}</p>
+        <p><strong>Дата регистрации:</strong> {{ user.registration_date }}</p>
+        <p><img src="{{ user.avatar_url }}" alt="Аватар"></p>
+        <button onclick="window.location.href='/logout'">Выйти</button>
+    </div>
+</body>
+</html>

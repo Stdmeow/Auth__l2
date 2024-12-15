@@ -106,6 +106,10 @@ def register():
 
     return render_template('register.html')
 
+@app.route('/')
+def home():
+    return redirect(url_for('login')) 
+
 # Страница входа
 @app.route('/login', methods=['GET', 'POST'])
 def login():
